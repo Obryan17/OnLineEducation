@@ -1,0 +1,65 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{%block content%}
+
+{% block banner-slider %}
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <div class="banner_content text-center">
+              <h2> {{ course.title }}</h2>
+              <div class="page_link">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="course-details.html">Courses Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock banner-slider %}
+
+{%block main-content%}
+<section class="course_details_area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 course_details_left">
+                <div class="main_image">
+                    <img class="img-fluid" src="{{ course.image_course.url }}" alt="">
+                </div>
+                <div class="content_wrapper">
+                    <h4 class="title">Description</h4>
+                    <div class="content">
+                         {{ course.description }}
+                    </div>                     
+
+                    <h4 class="title">Lesson</h4>
+                    <div class="content">
+                        <ul class="course_list">
+                            {% for lesson in lessons %}
+                            <li class="justify-content-between d-flex">
+                                <p> {{ lesson.title }}</p>
+                                <a class="primary-btn text-uppercase" href="{% url 'lesson_details' pk=lesson.pk %}">View Details</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            
+                  
+                 
+                
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock main-content%}
+{%endblock content%}
